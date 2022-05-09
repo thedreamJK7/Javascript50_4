@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin phone {
+    @media (max-width: 600px) {
+        @content;
+    }
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #2D2D2D;
+    overflow-x: hidden;
+}
+
+.container-circle {
+    width: 200px;
+    height: 200px;
+    background-color: #FF7D6D;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    transition: .5s transform linear;
+    &.container-rotate {
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+    button {
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        font-size: 26px;
+        color: white;
+        top: 60%;
+        left: 60%;
+        cursor: pointer;
+    }
+
+    button#close {
+        top: 60%;
+        left: 30%;
+        transform: rotate(90deg);
+    }
+}
+
+.container {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 100px 0;
+    transform-origin: top left;
+    transition: .5s transform linear;
+    &.container-rotate {
+            transform: rotate(-15deg);
+    }
+    .content {
+        width: 70%;
+        margin: 0 auto;
+        img {
+            width: 100%;
+        }
+        @include phone {
+            & {
+                width: 100%;
+                padding: 0 20px;
+            }
+        }
+    }
+}
+
+nav {
+    position: absolute;
+    bottom: 300px;
+    left: -160px;
+    transform: rotate(15deg);
+    ul li {
+        margin-bottom: 20px;
+        margin-left: 15px;
+        list-style: none;
+        i {
+            margin-right: 10px;
+            display: inline-block;
+            font-size: 20px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+    }
+    ul li + li {
+        margin-left: 30px;
+    }
+    ul li+li+li {
+        margin-left: 45px;
+    }
+}
